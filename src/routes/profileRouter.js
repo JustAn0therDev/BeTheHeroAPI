@@ -4,7 +4,7 @@ import profileController from "../controllers/profileController";
 const router = express.Router();
 
 router.get("/", async (request, response) => {
-  return profileController.selectAllIncidentsFromAnSpecificOng(
+  return await profileController.selectAllIncidentsFromAnSpecificOng(
     request,
     response
   );

@@ -1,14 +1,15 @@
-import express from 'express';
-import ongController from '../controllers/ongController';
-
+import express from "express";
+import ongController from "../controllers/ongController";
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    return res.json(await ongController.selectAllOngs());
+router.get("/", async (request, response) => {
+  let selectAllOngsResponse = await ongController.selectAllOngs();
+  return response.json(selectAllOngsResponse);
 });
 
-router.post('/', async (req, res) => {
-    return res.json(await ongController.insertOng(request)).statusCode(201);
+router.post("/", async (request, response) => {
+  let insertOngResponse = await ongController.insertOng(request);
+  return response.json(insertOngResponse);
 });
 
 export default router;

@@ -1,23 +1,7 @@
-import connection from "../database/databaseConnection";
-import createGenericResponseObjectFromSelect from "../utils/createGenericResponseObjectFromSelect";
+import profileService from "../services/profileService";
 
 export default {
   selectAllIncidentsFromAnSpecificOng: async (request, response) => {
-    let ong_id = request.headers.authorization;
-    
-    let [totalOfIncidentsInTheDatabase] = await connection("incidents").count();
-    let arrayOfAllIncidentsFromAnSpecificOng = await connection("incidents")
-      .where("ong_id", ong_id)
-      .select("*");
-
-    response.header(
-      "X-Total-Count",
-      totalOfIncidentsInTheDatabase["count(*)"]
-    );
-
-    return response.json(createGenericResponseObjectFromSelect(
-      "listOfIncidents",
-      arrayOfAllIncidentsFromAnSpecificOng
-    ));
+    return await profileService.selectAllIncidentsFromAnSpecificOng(request, response);
   }
 };

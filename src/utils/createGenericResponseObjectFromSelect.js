@@ -1,3 +1,17 @@
+function buildResponseSuccess(objectToReturnAsResponse) {
+  let objectReturnedWithRelevantValue = CheckIfObjectHasRelevantValue(
+    objectToReturnAsResponse
+  );
+
+  return objectReturnedWithRelevantValue;
+}
+
+function buildResponseMessage(objectToReturnAsResponse) {
+  return CheckIfObjectHasRelevantValue(objectToReturnAsResponse)
+    ? "Dados resgatados com sucesso"
+    : "Ocorreu um erro durante o resgate dos dados.";
+}
+
 function CheckIfObjectHasRelevantValue(objectToReturnAsResponse) {
   switch (typeof objectToReturnAsResponse) {
     case "array":
@@ -17,20 +31,6 @@ function CheckIfObjectHasRelevantValue(objectToReturnAsResponse) {
       ? true 
       : false;
   }
-}
-
-function buildResponseSuccess(objectToReturnAsResponse) {
-  let objectReturnedWithRelevantValue = CheckIfObjectHasRelevantValue(
-    objectToReturnAsResponse
-  );
-
-  return objectReturnedWithRelevantValue;
-}
-
-function buildResponseMessage(objectToReturnAsResponse) {
-  return CheckIfObjectHasRelevantValue(objectToReturnAsResponse)
-    ? "Dados resgatados com sucesso"
-    : "Ocorreu um erro durante o resgate dos dados.";
 }
 
 export default (propertyName, objectToReturnAsResponse) => {

@@ -4,15 +4,20 @@ import incidentController from "../controllers/incidentController";
 const router = express.Router();
 
 router.get("/", async (request, response) => {
-  return response.json(await incidentController.selectAllIncidents(request));
+  let selectAllIncidentsResponse = await incidentController.selectAllIncidents(
+    request
+  );
+  return response.json(selectAllIncidentsResponse);
 });
 
 router.post("/", async (request, response) => {
-  return response.status(201).json(await incidentController.insertIncident(request));
+  let insertIncidentResponse = await incidentController.insertIncident(request);
+  return response.json(insertIncidentResponse);
 });
 
 router.delete("/:id", async (request, response) => {
-  return response.status(204).json(await incidentController.deleteIncident(request));
+  let deleteIncidentResponse = await incidentController.deleteIncident(request);
+  return response.json(deleteIncidentResponse);
 });
 
 export default router;
