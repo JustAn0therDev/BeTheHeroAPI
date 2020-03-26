@@ -1,3 +1,13 @@
+export default (propertyName, objectToReturnAsResponse) => {
+  let createdResponse = {
+    success: buildResponseSuccess(objectToReturnAsResponse),
+    message: buildResponseMessage(objectToReturnAsResponse)
+  };
+  createdResponse[propertyName] = objectToReturnAsResponse;
+  
+  return createdResponse;
+};
+
 function buildResponseSuccess(objectToReturnAsResponse) {
   let objectReturnedWithRelevantValue = CheckIfObjectHasRelevantValue(
     objectToReturnAsResponse
@@ -32,13 +42,3 @@ function CheckIfObjectHasRelevantValue(objectToReturnAsResponse) {
       : false;
   }
 }
-
-export default (propertyName, objectToReturnAsResponse) => {
-  let createdResponse = {
-    success: buildResponseSuccess(objectToReturnAsResponse),
-    message: buildResponseMessage(objectToReturnAsResponse)
-  };
-  createdResponse[propertyName] = objectToReturnAsResponse;
-  
-  return createdResponse;
-};

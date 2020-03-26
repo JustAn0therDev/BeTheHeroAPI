@@ -1,3 +1,10 @@
+export default statusCode => {
+  return {
+    success: false,
+    message: CheckHttpStatusCode(statusCode)
+  };
+};
+
 function CheckHttpStatusCode(statusCode) {
   switch (statusCode) {
     case "400":
@@ -14,10 +21,3 @@ function CheckHttpStatusCode(statusCode) {
       return "Ocorreu um erro durante a execução do pedido.";
   }
 }
-
-export default statusCode => {
-  return {
-    success: false,
-    message: CheckHttpStatusCode(statusCode)
-  };
-};
