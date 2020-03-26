@@ -10,7 +10,7 @@ export default {
       .where("ong_id", ong_id)
       .select("*");
 
-    //This function is the only one that receives a response parameter,
+    //This function is the only one that has a response parameter,
     //since it has a custom header that needs to be built from the database.
     response.header(
       "X-Total-Count",
