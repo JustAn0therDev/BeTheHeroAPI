@@ -2,6 +2,7 @@ import crypto from "crypto";
 import databaseConnection from "../database/databaseConnection";
 import createGenericResponseObjectFromSelect from "../utils/createGenericResponseObjectFromSelect";
 import createGenericResponseObjectFromInsert from "../utils/createGenericResponseObjectFromInsert";
+import generateUniqueIdUsingCrypto from "../utils/generateUniqueIdUsingCrypto";
 
 export default {
   selectAllOngs: async () => {
@@ -15,7 +16,7 @@ export default {
   insertOng: async request => {
     let { name, email, whatsapp, city, uf } = request.body;
 
-    let randomlyGeneratedId = crypto.randomBytes(4).toString("HEX");
+    let randomlyGeneratedId = generateUniqueIdUsingCrypto();
 
     try {
       await databaseConnection("ongs").insert({

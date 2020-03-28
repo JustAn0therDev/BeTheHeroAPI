@@ -6,7 +6,7 @@ export default {
     let ong_id = request.headers.authorization;
     
     let [totalOfIncidentsInTheDatabase] = await connection("incidents").count();
-    let arrayOfAllIncidentsFromAnSpecificOng = await connection("incidents")
+    let arrayOfAllIncidentsFromASpecificOng = await connection("incidents")
       .where("ong_id", ong_id)
       .select("*");
 
@@ -19,7 +19,7 @@ export default {
 
     return response.json(createGenericResponseObjectFromSelect(
       "listOfIncidents",
-      arrayOfAllIncidentsFromAnSpecificOng
+      arrayOfAllIncidentsFromASpecificOng
     ));
   }
 };
